@@ -252,7 +252,7 @@ class GeneratorFull(nn.Module):
             "C": 20,
             # "K": 0, # 0.2
             # "R": 0 # 10
-            # "I": 2,
+            "I": 2,
             # "M": 1
         }
         self.losses = {
@@ -266,7 +266,7 @@ class GeneratorFull(nn.Module):
             "C": torch.nn.SyncBatchNorm.convert_sync_batchnorm(ContrastiveLoss(mode="direction")).cuda(),
             # "K": KLDivergenceLoss(),
             # "R": ReconLoss()
-            # "I": IdLoss(),
+            "I": IdLoss(),
             # "M": LandmarkLoss()
         }
         # self.losses["C"] = torch.nn.SyncBatchNorm.convert_sync_batchnorm(self.losses["C"])
@@ -335,8 +335,8 @@ class GeneratorFull(nn.Module):
             "PF": self.weights["P"] * (self.losses["P"](generated_d_64, d_64) + self.losses["P"](generated_d_128, d_128)),
             "G": self.weights["G"] * self.losses["G"](output_gd, True, False),
             "F": self.weights["F"] * self.losses["F"](features_gd, features_d),
-            # "E": self.weights["E"] * (self.losses["E"](kp_d, reverse_kp) + self.losses["E"](kp_c, reverse_kp_c)),
-            "E": self.weights["E"] * (self.losses["E"](kp_d, reverse_kp)),
+            "E": self.weights["E"] * (self.losses["E"](kp_d, reverse_kp) + self.losses["E"](kp_c, reverse_kp_c)),
+            # "E": self.weights["E"] * (self.losses["E"](kp_d, reverse_kp)),
 
             "L": self.weights["L"] * (self.losses["L"](kp_d)+self.losses["L"](kp_c)),
             # "H": self.weights["H"] * self.losses["H"](yaw, pitch, roll, real_yaw, real_pitch, real_roll),
@@ -345,7 +345,7 @@ class GeneratorFull(nn.Module):
             # "D": self.weights["D"] * self.losses["D"](delta_d),
             "D": self.weights["D"] * self.losses["D"](delta_d),
             "C": torch.Tensor([0.0]).cuda() if x_c_d is None else self.weights["C"] * self.losses["C"](x_c_d, x_a_c_d),
-            # "I": self.weights["I"] * self.losses["I"]((kp_c, kp_c_d)),
+            "I": self.weights["I"] * self.losses["I"]((kp_c, kp_c_d)),
             # "M": self.weights["M"] * self.losses["M"](generated_d, d)
         }
         # return loss, generated_d, generated_d_n, transformed_d, kp_c, kp_s, kp_d, transformed_kp, occlusion, mask
