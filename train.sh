@@ -23,5 +23,6 @@
 # python train.py --batch_size=32 --gpu_ids=0,2,3,4, --ext=mainv9finalv3-lml-dls-newgenmodel-mask-slr-sc-lp-ltest6 --ckp=138 --lr=0.00001 --root_dir='/data1/xuhui/data/vox-png' 
 
 # pre + efe
-python train.py --batch_size=10 --gpu_ids=0,1,2,3 --ext=pre+efe --ckp=0 --lr=lr=0.00005 --root_dir='/home/lh/repo/datasets/vox-png'
+# python train.py --batch_size=8 --gpu_ids=0,1,2,3 --ext=pre+efe --ckp=0 --lr=0.00005 --root_dir='/home/lh/repo/datasets/vox-png'
 
+CUDA_LAUNCH_BLOCKING=1 python train.py --batch_size=4 --gpu_ids=0,1,2,3,4,5,6,7 --ext=pre+efe --ckp=0 --lr=0.00005--data_name='vox' --root_dir='/home/momobot/repo/code/2.faceanaimation/dataset/vox1/vox-png'
