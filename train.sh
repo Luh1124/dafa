@@ -28,5 +28,5 @@
 
 #pre+efe+C+r+id
 # python train.py --batch_size=32 --gpu_ids=3,4 --ext=pre+efe+C+r+id --ckp=0 --lr=0.00005 --root_dir='/data1/xuhui/data/vox-png' 
-python train.py --batch_size=8 --gpu_ids=0,1,2,3 --ext=pre+efe+C+r+id --ckp=0 --lr=0.00005 --root_dir='/data1/xuhui/data/vox-png' 
+python train.py --batch_size=8 --gpu_ids=0,1,2,3 --ext=pre+efe+C+r+id --ckp=0 --lr=0.00005 --root_dir='/home/lh/repo/datasets/vox-png' 
 
