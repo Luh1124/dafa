@@ -20,5 +20,5 @@
 # slr
 # python train.py --batch_size=32 --gpu_ids=0,2,3,4, --ext=mainv9finalv3-lml-dls-newgenmodel-mask-slr-sc-lp-ltest6 --ckp=107 --lr=0.00001 --root_dir='/data1/xuhui/data/vox-png' 
 # slr large mouth
-python train.py --batch_size=32 --gpu_ids=0,2,3,4, --ext=mainv9finalv3-lml-dls-newgenmodel-mask-slr-sc-lp-ltest6 --ckp=138 --lr=0.00001 --root_dir='/data1/xuhui/data/vox-png' 
+python train.py --batch_size=32 --gpu_ids=0,1 --ext=dafa_all --ckp=0 --lr=0.00005 --root_dir='/home/omnisky/repo/datasets/vox1/vox-png' 
 

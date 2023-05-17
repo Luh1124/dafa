@@ -342,7 +342,7 @@ class GeneratorFull(nn.Module):
             
             # "D": self.weights["D"] * self.losses["D"](delta_d),
             "D": self.weights["D"] * self.losses["D"](delta_d),
-            "C": torch.Tensor([0.0]).cuda() if x_c_d is None else self.weights["C"] * self.losses["C"](x_c_d, x_a_c_d),
+            "C": torch.Tensor([0.0]).cuda() if x_a_c_d is None else self.weights["C"] * self.losses["C"](x_c_d, x_a_c_d),
             "I": self.weights["I"] * self.losses["I"]((kp_c, kp_c_d)),
             "M": self.weights["M"] * self.losses["M"](generated_d, d)
         }

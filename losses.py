@@ -412,6 +412,25 @@ class IdLoss(nn.Module):
         loss = self.mseloss(Rec[0], Rec[1])
         return loss
 
+# def l1_regularization(model, l1_alpha):
+#     l1_loss = []
+#     for module in model.modules():
+#         if type(module) is nn.BatchNorm2d:
+#             l1_loss.append(torch.abs(module.weight).sum())
+#     return l1_alpha * sum(l1_loss)
+
+# def l2_regularization(model, l2_alpha):
+#     l2_loss = []
+#     for module in model.modules():
+#         if type(module) is nn.Conv2d:
+#             l2_loss.append((module.weight ** 2).sum() / 2.0)
+#     return l2_alpha * sum(l2_loss)
+
+
+def Vae_regularization(logits, l2_alpha):
+    l2_loss = (torch.pow(logits, 2).sum() / 2.0)
+    return l2_alpha * sum(l2_loss)
+
 
 from utils import pts_1k_to_145_mouth, pts_1k_to_145_eye, \
                     pts_1k_to_145_pupil, pts_1k_to_145_others, \
