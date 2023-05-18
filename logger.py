@@ -164,7 +164,7 @@ class Logger:
                 losses_g, generated_d, transformed_d, kp_c, kp_s, kp_d, transformed_kp, occlusion, mask = self.g_full(s, d, s_a, d_a, train_vae)
                 # losses_g, generated_d, generated_d_n, transformed_d, kp_c, kp_s, kp_d, transformed_kp, occlusion, mask = self.g_full(s, d, s_a, d_a, train_vae)
                 # losses_g, generated_d, transformed_d, kp_s, kp_d, transformed_kp, occlusion, mask = self.g_full(s, d)         
-                if self.epoch < 0:
+                if self.epoch < 10:
                     losses_g["M"] = losses_g["M"] * 0.
                 loss_g = sum(losses_g.values())
                 loss_g.backward()
